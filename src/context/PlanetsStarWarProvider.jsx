@@ -4,9 +4,10 @@ import { createContext, useState, useEffect } from 'react';
 export const PlanetsStarWarContext = createContext();
 
 function PlanetsStarWarProvider({ children }) {
-  const [dataApi, setDataApi] = useState({});
+  const [dataApi, setDataApi] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMensage, setErrorMensage] = useState('');
+  const [filters, setFilter] = useState({ filterName: [] });
   useEffect(() => {
     try {
       setIsLoading(true);
@@ -30,6 +31,8 @@ function PlanetsStarWarProvider({ children }) {
     dataApi,
     isLoading,
     errorMensage,
+    filters,
+    setFilter,
   };
 
   return (
@@ -40,7 +43,7 @@ function PlanetsStarWarProvider({ children }) {
 }
 
 PlanetsStarWarProvider.propTypes = {
-  children: PropTypes.func.isRequired,
-};
+  children: PropTypes.object,
+}.isDefault;
 
 export default PlanetsStarWarProvider;
