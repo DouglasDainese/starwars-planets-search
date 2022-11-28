@@ -7,7 +7,7 @@ function PlanetsStarWarProvider({ children }) {
   const [dataApi, setDataApi] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMensage, setErrorMensage] = useState('');
-  const [filters, setFilter] = useState({ filterName: [] });
+  const [filters, setFilter] = useState([]);
   useEffect(() => {
     try {
       setIsLoading(true);
@@ -19,6 +19,7 @@ function PlanetsStarWarProvider({ children }) {
             return planet;
           });
           setDataApi(planetas);
+          setFilter(planetas);
         });
     } catch (error) {
       setErrorMensage('erro na requisição');
