@@ -13,10 +13,11 @@ function Filter() {
   const { dataApi, setFilter } = useContext(PlanetsStarWarContext);
 
   useEffect(() => {
-    const newfiltersname = dataApi.filter((planet) => planet.name.toLowerCase()
-      .includes(filterName.toLowerCase()));
+    const newfiltersname = (dataApi)
+      .filter((planet) => planet.name.toLowerCase()
+        .includes(filterName.toLowerCase()));
     const filtersNumbers = filterNumber.reduce((acc, filter) => (
-      newfiltersname.filter((planeta) => {
+      acc.filter((planeta) => {
         switch (filter.operador) {
         case 'maior que':
           console.log(`maior que ${planeta[filter.coluna]}`);
