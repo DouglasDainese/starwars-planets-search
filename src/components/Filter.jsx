@@ -77,11 +77,31 @@ function Filter() {
             value={ valueInputs.coluna }
             onChange={ handleChange }
           >
-            <option>population</option>
-            <option>orbital_period</option>
-            <option>diameter</option>
-            <option>rotation_period</option>
-            <option>surface_water</option>
+            {
+              !filterNumber.some((filters) => (
+                filters.coluna === 'population'))
+                && <option>population</option>
+            }
+            {
+              !filterNumber.some((filters) => (
+                filters.coluna === 'orbital_period'))
+                && <option>orbital_period</option>
+            }
+            {
+              !filterNumber.some((filters) => (
+                filters.coluna === 'diameter'))
+                && <option>diameter</option>
+            }
+            {
+              !filterNumber.some((filters) => (
+                filters.coluna === 'rotation_period'))
+                && <option>rotation_period</option>
+            }
+            {
+              !filterNumber.some((filters) => (
+                filters.coluna === 'surface_water'))
+                && <option>surface_water</option>
+            }
           </select>
         </label>
         <label htmlFor="comparison-filter">
