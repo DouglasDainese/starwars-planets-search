@@ -8,6 +8,7 @@ function PlanetsStarWarProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMensage, setErrorMensage] = useState('');
   const [filters, setFilter] = useState([]);
+  const [filterNumber, setFilterNumber] = useState([]);
   useEffect(() => {
     try {
       setIsLoading(true);
@@ -34,6 +35,8 @@ function PlanetsStarWarProvider({ children }) {
     errorMensage,
     filters,
     setFilter,
+    filterNumber,
+    setFilterNumber,
   };
 
   return (

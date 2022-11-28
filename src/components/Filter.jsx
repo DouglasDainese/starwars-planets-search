@@ -3,14 +3,18 @@ import { PlanetsStarWarContext } from '../context/PlanetsStarWarProvider';
 
 function Filter() {
   const [filterName, setFilterName] = useState('');
-  const [filterNumber, setFilterNumber] = useState([]);
   const cleanInputs = {
     coluna: 'population',
     operador: 'maior que',
     valor: 0,
   };
   const [valueInputs, setValueInputs] = useState(cleanInputs);
-  const { dataApi, setFilter } = useContext(PlanetsStarWarContext);
+  const {
+    dataApi,
+    setFilter,
+    filterNumber,
+    setFilterNumber,
+  } = useContext(PlanetsStarWarContext);
 
   useEffect(() => {
     const newfiltersname = (dataApi)
@@ -20,15 +24,10 @@ function Filter() {
       acc.filter((planeta) => {
         switch (filter.operador) {
         case 'maior que':
-          console.log(`maior que ${planeta[filter.coluna]}`);
           return Number(planeta[filter.coluna]) > Number(filter.valor);
         case 'menor que':
-
-          console.log(`menor que ${filter.coluna}`);
           return Number(planeta[filter.coluna]) < Number(filter.valor);
         case 'igual a':
-
-          console.log(`igual ${planeta[filter.coluna]}`);
           return Number(planeta[filter.coluna]) === Number(filter.valor);
         default:
           return true;
@@ -54,6 +53,13 @@ function Filter() {
   const saveFilter = () => {
     setFilterNumber([...filterNumber, valueInputs]);
     setValueInputs(cleanInputs);
+  };
+
+  const delFilter = ({ target }) => {
+    const newFilters = target.id === 'all' ? []
+      : filterNumber.filter((filtro) => filtro.coluna !== target.id);
+
+    setFilterNumber(newFilters);
   };
 
   return (
@@ -130,7 +136,35 @@ function Filter() {
           data-testid="button-filter"
           onClick={ saveFilter }
         />
+        <button
+          type="button"
+          id="all"
+          onClick={ delFilter }
+          data-testid="button-remove-filters"
+        >
+          Remover Filtros
+        </button>
       </div>
+      {
+        filterNumber
+        && (
+          <section>
+            {
+              filterNumber.map((filter, index) => (
+                <p key={ `${filter.coluna} ${index}` } data-testid="filter">
+                  {`${filter.coluna} ${filter.operador} ${filter.valor}`}
+                  <button
+                    type="button"
+                    id={ filter.coluna }
+                    onClick={ delFilter }
+                  >
+                    excluir
+                  </button>
+                </p>
+              ))
+            }
+          </section>)
+      }
     </form>
   );
 }
