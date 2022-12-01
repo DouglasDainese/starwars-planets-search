@@ -11,9 +11,11 @@ function PlanetsStarWarProvider({ children }) {
   const [filterNumber, setFilterNumber] = useState([]);
   useEffect(() => {
     try {
-      setIsLoading(true);
       fetch('https://swapi.dev/api/planets')
-        .then((response) => response.json())
+        .then((response) => {
+          setIsLoading(true);
+          return response.json();
+        })
         .then((planets) => {
           const planetas = planets.results.map((planet) => {
             delete planet.residents;
@@ -21,6 +23,7 @@ function PlanetsStarWarProvider({ children }) {
           });
           setDataApi(planetas);
           setFilter(planetas);
+          setIsLoading(false);
         });
     } catch (error) {
       setErrorMensage('erro na requisição');
