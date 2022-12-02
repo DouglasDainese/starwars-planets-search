@@ -22,10 +22,15 @@ describe('teste geral da Aplicação', () => {
   test('o componente table', async () => {
     const tabela = screen.getByRole('table');
     const headerTable = screen.getAllByRole('columnheader');
+    const planetsInfor = screen.findAllByTestId('planet-name');
     const headerSize = 13;
+    const rowSize = 10;
+
+    console.log((await planetsInfor).length);
 
     expect(tabela).toBeInTheDocument();
     expect(headerTable).toHaveLength(headerSize);
+    expect((await planetsInfor).length).toHaveLength(rowSize);
   });
   
 });

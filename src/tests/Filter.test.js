@@ -33,11 +33,11 @@ describe('teste o componente Filter', () => {
     const nabooPlanet = screen.findByRole('row', { current: /naboo/i })
     const alderaanPlanet = screen.findByRole('row', { current: /alderaan/i })
 
-    console.log(tatooinePlanet);
    
     waitFor(() => {
       expect(tatooinePlanet).not.toBeInTheDocument();
       expect(nabooPlanet).toBeInTheDocument();
+      console.log(nabooPlanet);
   
       userEvent(filterName, 'tat')
   
