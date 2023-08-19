@@ -5,6 +5,41 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
+  background-image: url('./img/fundo-star-wars\ \(1\)\ 1.png');
+  background-position: left;
+  background-repeat: no-repeat;
+}
+
+#circle-1 {
+  background-image: url('./img/Ellipse\ 1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  margin-top: -50px;
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 695.06px;
+  width: 695.06px;
+}
+
+#circle-2 {
+  background-image: url('./img/Ellipse\ 2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 488px;
+  width: 488px;
+}
+
+img {
+  display: block;
+  margin: 0 auto;
 }
 
 code {
