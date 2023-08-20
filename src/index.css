@@ -5,10 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: url('./img/fundo-star-wars\ \(1\)\ 1.png');
   background-color: black;
-  background-image: url('./img/fundo-star-wars\ \(1\)\ 1.png');
-  background-position: left;
   background-repeat: no-repeat;
+  width: 100vp;
+  height: 1638px;
 }
 
 #circle-1 {
@@ -16,7 +17,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   margin: 0 auto;
-  margin-top: -50px;
+  margin-top: -40px;
   display: flex;
   justify-content: center;
   align-items: top;
@@ -40,6 +41,39 @@ body {
 img {
   display: block;
   margin: 0 auto;
+}
+
+main {
+  width: 95%;
+  height: 750px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  border: 1px solid #FFF;
+  margin-left: 38px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#container-filter {
+  position: relative;
+}
+
+#name-filter {
+  width: 671px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  border: 1px solid #FFF;
+  background-color: transparent;
+  margin-top: 58px;
+  color: #FFF;
+}
+
+svg {
+  position: absolute;
+  margin-left: -40px;
+  margin-top: 70px;
 }
 
 code {

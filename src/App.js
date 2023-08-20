@@ -11,11 +11,10 @@ function App() {
           <img src={ logoImg } alt="logo StarWar" />
         </div>
       </div>
-
-      <h1>Star Wars Planets</h1>
-      <span>Hello, Padawans!</span>
-      <Filter />
-      <Table />
+      <main>
+        <Filter />
+        <Table />
+      </main>
     </>
   );
 }
