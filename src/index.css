@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, Epilogue, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -43,6 +43,94 @@ img {
   margin: 0 auto;
 }
 
+#container-filter-operator {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.TEST {
+  flex-shrink: 0;
+
+}
+
+select {
+  background: transparent;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  width: 134px;
+  height: 30px;
+  border: none;
+  border-bottom: 1px solid #FFF;
+  color: #FFF;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select option {
+  appearance: none;
+  color: FFF;
+  background-color: #2E3035;
+}
+
+select:focus {
+  outline: none;
+  border-color: #FAE60A;
+  box-shadow: 0 0 5px #FAE60A;
+}
+
+.filtros {
+  display: flex;
+  flex-direction: column;
+  color: #AEAEAE;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.applied-filters {
+  display: flex;
+  width: 100%;
+  height: 30px;
+  margin: 20px;
+  justify-content: left;
+  align-items: center;
+}
+
+.applied-filters span {
+  margin-left: 10px;
+  font-family: Epilogue;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.applied-filters button {
+  margin-left: 5px;
+  font-family: Epilogue;
+  font-size: 12px;
+  font-style: normal;
+  background-color: transparent;
+  border: 1px solid #FAE60A;
+  color: #FAE60A;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  border-radius: 5px;
+  width: 50px;
+  height: 20px;
+  flex-shrink: 0;
+
+}
+
 main {
   width: 95%;
   height: 750px;
@@ -51,11 +139,49 @@ main {
   border: 1px solid #FFF;
   margin-left: 38px;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  color: #ffffff;
+  flex-shrink: 0;
 }
 
-#container-filter {
+.table-filter {
+  overflow: scroll;
+  margin: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+section::-webkit-scrollbar {
+  width: 10px;
+  height: 12px;
+}
+
+section::-webkit-scrollbar-track {
+  background: #444955;
+  border-radius: 20px;
+  width: 4px;
+  height: 361px;
+  flex-shrink: 0;
+}
+
+section::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background: #7E7E7E;
+  width: 4px;
+  height: 37px;
+  flex-shrink: 0;
+}
+
+section::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+
+#container-filter-name {
   position: relative;
 }
 
@@ -67,13 +193,89 @@ main {
   border: 1px solid #FFF;
   background-color: transparent;
   margin-top: 58px;
+  margin-bottom: 58px;
   color: #FFF;
+}
+
+#name-filter:focus {
+  outline: none;
+  border-color: #FAE60A;
+  box-shadow: 0 0 5px #FAE60A;
 }
 
 svg {
   position: absolute;
   margin-left: -40px;
   margin-top: 70px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  display: none;
+}
+
+#input-value {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-right: 50px;
+  text-align: center;
+  color: #FFF;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  width: 91px;
+  height: 42px;
+  flex-shrink: 0;
+  stroke-width: 1px;
+  stroke: #FFF;
+  border-radius: 05px;
+  background-color: transparent;
+}
+
+#input-value:focus {
+  outline: none;
+  border-color: #FAE60A;
+  box-shadow: 0 0 5px #FAE60A;
+}
+
+.btn {
+  background-color: transparent;
+  border: 1px solid #FAE60A;
+  color: #FAE60A;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 18px;
+  border-radius: 5px;
+  width: 91px;
+  height: 85px;
+  flex-shrink: 0;
+}
+
+
+
+thead {
+  border-bottom: 1px solid #444955;
+  background-color: #2E3035;
+  width: 356px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+td {
+  text-align: center;
+  border: inherit;
+  color: #AEAEAE;
+  font-family: Epilogue;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+tr {
+  border-bottom: 1px solid #828282;
 }
 
 code {

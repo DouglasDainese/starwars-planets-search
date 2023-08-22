@@ -64,7 +64,7 @@ function Filter() {
 
   return (
     <form>
-      <div id="container-filter">
+      <div id="container-filter-name">
         <input
           id="name-filter"
           type="text"
@@ -89,8 +89,8 @@ function Filter() {
           />
         </svg>
       </div>
-      <div>
-        <label htmlFor="column-filter">
+      <div id="container-filter-operator">
+        <label className="filtros" htmlFor="column-filter">
           Coluna:
           <select
             data-testid="column-filter"
@@ -101,31 +101,31 @@ function Filter() {
             {
               !filterNumber.some((filters) => (
                 filters.coluna === 'population'))
-                && <option>population</option>
+                && <option className="dropdown">population</option>
             }
             {
               !filterNumber.some((filters) => (
                 filters.coluna === 'orbital_period'))
-                && <option>orbital_period</option>
+                && <option className="dropdown">orbital_period</option>
             }
             {
               !filterNumber.some((filters) => (
                 filters.coluna === 'diameter'))
-                && <option>diameter</option>
+                && <option className="dropdown">diameter</option>
             }
             {
               !filterNumber.some((filters) => (
                 filters.coluna === 'rotation_period'))
-                && <option>rotation_period</option>
+                && <option className="dropdown">rotation_period</option>
             }
             {
               !filterNumber.some((filters) => (
                 filters.coluna === 'surface_water'))
-                && <option>surface_water</option>
+                && <option className="dropdown">surface_water</option>
             }
           </select>
         </label>
-        <label htmlFor="comparison-filter">
+        <label className="filtros" htmlFor="comparison-filter">
           Operador:
           <select
             data-testid="comparison-filter"
@@ -138,20 +138,26 @@ function Filter() {
             <option>igual a</option>
           </select>
         </label>
-        <input
-          type="number"
-          name="valor"
-          data-testid="value-filter"
-          value={ valueInputs.valor }
-          onChange={ (e) => handleChange(e) }
-        />
-        <input
-          type="button"
-          value="Filtrar"
-          data-testid="button-filter"
-          onClick={ saveFilter }
-        />
+        <div className="TEST">
+          <input
+            id="input-value"
+            type="number"
+            name="valor"
+            data-testid="value-filter"
+            value={ valueInputs.valor }
+            onChange={ (e) => handleChange(e) }
+          />
+          <input
+            className="btn"
+            type="button"
+            value="FILTRAR"
+            data-testid="button-filter"
+            onClick={ saveFilter }
+          />
+        </div>
+
         <button
+          className="btn"
           type="button"
           id="all"
           onClick={ delFilter }
@@ -159,27 +165,32 @@ function Filter() {
         >
           Remover Filtros
         </button>
+
       </div>
-      {
-        filterNumber
-        && (
-          <section>
-            {
-              filterNumber.map((filter, index) => (
-                <p key={ `${filter.coluna} ${index}` } data-testid="filter">
-                  {`${filter.coluna} ${filter.operador} ${filter.valor}`}
-                  <button
-                    type="button"
-                    id={ filter.coluna }
-                    onClick={ delFilter }
-                  >
-                    excluir
-                  </button>
-                </p>
-              ))
-            }
-          </section>)
-      }
+      <section className="applied-filters">
+        {
+          filterNumber.length > 0 && (
+            <>
+              {
+                filterNumber.map((filter, index) => (
+                  <span key={ `${filter.coluna} ${index}` } data-testid="filter">
+                    {`${filter.coluna} ${filter.operador} ${filter.valor}`}
+                    <button
+                      type="button"
+                      id={ filter.coluna }
+                      onClick={ delFilter }
+                    >
+                      excluir
+                    </button>
+                  </span>
+                ))
+              }
+
+            </>)
+        }
+
+      </section>
+
     </form>
   );
 }
