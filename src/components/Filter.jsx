@@ -2,9 +2,14 @@ import React, { useContext, useState, useEffect } from 'react';
 import { PlanetsStarWarContext } from '../context/PlanetsStarWarProvider';
 
 function Filter() {
+  const limiteDeFiltros = 5;
+  const optionsFilters = [
+    'population', 'orbital_period', 'diameter',
+    'rotation_period', 'surface_water'];
+  const [filtersSelected, setFilterSelected] = useState(optionsFilters);
   const [filterName, setFilterName] = useState('');
   const cleanInputs = {
-    coluna: 'population',
+    coluna: 'Escolha um filtro',
     operador: 'maior que',
     valor: 0,
   };
@@ -35,6 +40,9 @@ function Filter() {
       })
     ), newfiltersname);
     setFilter(filtersNumbers);
+    if (filterNumber.length === 0) {
+      return setFilterSelected(optionsFilters);
+    }
   }, [filterName, filterNumber]);
 
   const handleChange = ({ target }) => {
@@ -51,6 +59,14 @@ function Filter() {
   };
 
   const saveFilter = () => {
+    const optionsDefault = ['Escolha um filtro', 'Todos os filtros já aplicados'];
+    if (filterNumber.length === limiteDeFiltros) {
+      return;
+    }
+    if (optionsDefault.includes(valueInputs.coluna)) {
+      return;
+    }
+
     setFilterNumber([...filterNumber, valueInputs]);
     setValueInputs(cleanInputs);
   };
@@ -58,8 +74,12 @@ function Filter() {
   const delFilter = ({ target }) => {
     const newFilters = target.id === 'all' ? []
       : filterNumber.filter((filtro) => filtro.coluna !== target.id);
+    const newOptions = target.id === 'all' ? optionsFilters
+      : [target.id, ...filtersSelected];
 
     setFilterNumber(newFilters);
+    setFilterSelected(newOptions);
+    setValueInputs(cleanInputs);
   };
 
   return (
@@ -84,7 +104,18 @@ function Filter() {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M12.8292 12.8292C14.9398 10.7186 14.9398 7.29659 12.8292 5.18598C10.7186 3.07538 7.29659 3.07538 5.18598 5.18598C3.07538 7.29659 3.07538 10.7186 5.18598 12.8292C7.29659 14.9398 10.7186 14.9398 12.8292 12.8292ZM13.9756 16.5233C10.4782 18.8405 5.71968 18.4583 2.63826 15.3769C-0.879419 11.8592 -0.879419 6.15594 2.63826 2.63826C6.15594 -0.879419 11.8592 -0.879419 15.3769 2.63826C18.4583 5.71968 18.8405 10.4782 16.5233 13.9756L20.4723 17.9246C21.1759 18.6282 21.1759 19.7688 20.4723 20.4723C19.7688 21.1759 18.6282 21.1759 17.9246 20.4723L13.9756 16.5233Z"
+            d={ `
+            M12.8292 12.8292C14.9398 10.7186 14.9398 7.29659 12.8292 5.18598
+            C10.7186 3.07538 7.29659 3.07538 5.18598 5.18598
+            C3.07538 7.29659 3.07538 10.7186 5.18598 12.8292
+            C7.29659 14.9398 10.7186 14.9398 12.8292 12.8292ZM13.9756 16.5233
+            C10.4782 18.8405 5.71968 18.4583 2.63826 15.3769
+            C-0.879419 11.8592 -0.879419 6.15594 2.63826 2.63826
+            C6.15594 -0.879419 11.8592 -0.879419 15.3769 2.63826
+            C18.4583 5.71968 18.8405 10.4782 16.5233 13.9756
+            L20.4723 17.9246C21.1759 18.6282 21.1759 19.7688 20.4723 20.4723
+            C19.7688 21.1759 18.6282 21.1759 17.9246 20.4723
+            L13.9756 16.5233Z` }
             fill="white"
           />
         </svg>
@@ -98,6 +129,11 @@ function Filter() {
             value={ valueInputs.coluna }
             onChange={ handleChange }
           >
+            {
+              filterNumber.length === limiteDeFiltros
+                ? <option>Todos os filtros já aplicados</option>
+                : <option>Escolha um filtro</option>
+            }
             {
               !filterNumber.some((filters) => (
                 filters.coluna === 'population'))

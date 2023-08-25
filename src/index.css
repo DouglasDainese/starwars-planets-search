@@ -9,7 +9,7 @@ body {
   background-color: black;
   background-repeat: no-repeat;
   width: 100vp;
-  height: 1638px;
+  height: 110%;
 }
 
 #circle-1 {
@@ -146,7 +146,9 @@ main {
 
 .table-filter {
   overflow: scroll;
-  margin: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
 }
 
 form {
