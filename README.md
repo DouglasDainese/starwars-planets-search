@@ -2,7 +2,8 @@
 
 "Que a Força esteja com você enquanto exploramos galáxias distantes!" - Mestre Yoda
 
-![img](projectIntro.gif)
+
+![img](/src/img/previusProject.png)
 
 Bem-vindo ao repositório do projeto Star Wars Planets Search! Nesta jornada intergaláctica, embarcamos em uma missão épica para criar uma aplicação que consulta uma API e traz à vida os dados fascinantes dos planetas do universo de Star Wars. Como um verdadeiro Jedi do código, vamos usar esses dados para construir uma tabela interativa com filtros sensacionais! 🚀🌌
 
