@@ -2,8 +2,7 @@
 
 <p align="center">
   <img src="/src/img/previusProject.png" alt="Prévia do projeto">
-
-<small>"Que a Força esteja com você enquanto exploramos galáxias distantes!" - Mestre Yoda</small>
+  <small>"Que a Força esteja com você enquanto exploramos galáxias distantes!" - Mestre Yoda</small>
 </p>
 
 
